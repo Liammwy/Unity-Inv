@@ -21,6 +21,6 @@ public class HardDrivePickup : MonoBehaviour, IPickupable
     {
         Debug.Log("Picked up drive");
         hasDrive = true;
-        gameObject.SetActive(false);
+        Destroy(gameObject);
     }
 }

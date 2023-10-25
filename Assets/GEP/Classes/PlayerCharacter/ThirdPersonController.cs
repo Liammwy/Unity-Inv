@@ -11,11 +11,6 @@ namespace StarterAssets
 
     public class ThirdPersonController : MonoBehaviour
     {
-        public GameObject inventoryUI;
-        public GameObject InputPrompt;
-        public GameObject serverHitBox;
-        public GameObject hardDriveItem;
-
         [Header("Player")]
         [Tooltip("Move speed of the character in m/s")]
         public float MoveSpeed = 2.0f;
@@ -105,8 +100,6 @@ namespace StarterAssets
         private CharacterController _controller;
         private PlayerCharacterInput _input;
         private GameObject _mainCamera;
-        private HardDrivePickup _hardDrivePickup;
-        private ServerHitBox _serverHitBox;
 
         private const float _threshold = 0.01f;
 
@@ -138,8 +131,6 @@ namespace StarterAssets
             _controller = GetComponent<CharacterController>();
             _input = GetComponent<PlayerCharacterInput>();
             _playerInput = GetComponent<PlayerInput>();
-            _hardDrivePickup = hardDriveItem.GetComponent<HardDrivePickup>();
-            _serverHitBox = serverHitBox.GetComponent<ServerHitBox>();
 
             AssignAnimationIDs();
 
@@ -155,7 +146,6 @@ namespace StarterAssets
             JumpAndGravity();
             GroundedCheck();
             Move();
-            openServer();
         }
 
         private void LateUpdate()
@@ -274,28 +264,6 @@ namespace StarterAssets
                 _animator.SetFloat(_animIDSpeed, _animationBlend);
                 _animator.SetFloat(_animIDMotionSpeed, inputMagnitude);
             }
-        }
-
-        private void openServer()
-        { 
-            if (_input.server && _serverHitBox.in_zone && _hardDrivePickup.hasDrive)
-            {
-
-                if (!inventoryUI.activeSelf)
-                {
-                    inventoryUI.SetActive(true);
-                    InputPrompt.SetActive(false);
-                }
-                else
-                {
-                    _hardDrivePickup.gameObject.SetActive(true);
-                    _hardDrivePickup.hasDrive = false;
-                    inventoryUI.SetActive(false);
-                }
-
-                _input.server = false;
-            }
-            _input.server = false;
         }
 
         private void JumpAndGravity()
