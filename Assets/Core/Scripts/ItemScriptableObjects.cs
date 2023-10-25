@@ -3,11 +3,9 @@ using System.Collections.Generic;
 using UnityEngine;
 
 
-[CreateAssetMenu(fileName = "Item", menuName = "Items/Items SO")]
+[CreateAssetMenu(fileName = "Item", menuName = "Items/Items SO", order = 1)]
 public class ItemScriptableObject : ScriptableObject
 {
-    private bool x;
-
     // Data that we want EVERY item to have
     public string itemName;
     public string itemDescription;
