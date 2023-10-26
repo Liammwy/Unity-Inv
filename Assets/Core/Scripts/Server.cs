@@ -7,7 +7,8 @@ public class Server : MonoBehaviour
     [SerializeField]
     public List<Drive> drives = new List<Drive>();
 
-    public void Update()
+    public void Start()
     {
+
     }
 }
