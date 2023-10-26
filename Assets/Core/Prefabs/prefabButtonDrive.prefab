@@ -12,9 +12,9 @@ GameObject:
   - component: {fileID: 2841524798861848859}
   - component: {fileID: 2159772048907430036}
   - component: {fileID: 1530261328323078215}
-  - component: {fileID: -7951008831001548690}
+  - component: {fileID: 7773336590333123993}
   m_Layer: 5
-  m_Name: Button_Prefab
+  m_Name: prefabButtonDrive
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -120,8 +120,20 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 2159772048907430036}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
---- !u!114 &-7951008831001548690
+      m_Calls:
+      - m_Target: {fileID: 7773336590333123993}
+        m_TargetAssemblyTypeName: driveButtonSelection, Assembly-CSharp
+        m_MethodName: driveClicked
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+--- !u!114 &7773336590333123993
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -130,10 +142,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 7788207366525763028}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e741851cba3ad425c91ecf922cc6b379, type: 3}
+  m_Script: {fileID: 11500000, guid: a3dad5c09ed57404c97582fd00ec332d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _data:
-    _json: '{"declarations":{"Kind":"Object","collection":{"$content":[{"name":"button_number","value":{"$content":0,"$type":"System.Int32"},"typeHandle":{"Identification":"System.Int32,
-      mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089","$version":"A"},"$version":"A"}],"$version":"A"},"$version":"A"}}'
-    _objectReferences: []
