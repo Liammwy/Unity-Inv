@@ -9,14 +9,16 @@ public class ServerHitBox : MonoBehaviour
     public GameObject inputPrompt;
     public GameObject inputPromptError;
     public GameObject inventoryUi;
-    public GameObject hard_drive_item;
+    public GameObject server;
+    private Server _driveList;
+
     public bool in_zone;
 
     private HardDrivePickup hardDrivePickup;
     
     private void Start()
     {
-        hardDrivePickup = hard_drive_item.GetComponent<HardDrivePickup>();
+        _driveList = server.GetComponent<Server>();
     }
 
     private void OnTriggerEnter(Collider other)
@@ -24,11 +26,11 @@ public class ServerHitBox : MonoBehaviour
         in_zone = true;
         if (!inventoryUi.activeInHierarchy)
         {
-            if (hardDrivePickup.hasDrive)
+            if (_driveList.drives.Count > 0)
             {
                 inputPrompt.SetActive(true);
             }
-            else if (!hardDrivePickup.hasDrive)
+            else if (_driveList.drives.Count <= 0)
             {
                 inputPromptError.SetActive(true);
             }

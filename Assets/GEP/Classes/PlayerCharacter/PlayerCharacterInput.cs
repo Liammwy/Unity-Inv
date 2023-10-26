@@ -12,12 +12,27 @@ public class PlayerCharacterInput : MonoBehaviour
     public bool sprint;
     public bool server;
 
+    public GameObject serverHitBox;
+    public GameObject serverOBJ;
+
+    public GameObject inventoryUI;
+    public GameObject InputPrompt;
+
+    private Server _driveList;
+    private ServerHitBox _serverHitBox;
+
     [Header("Movement Settings")]
     public bool analogMovement;
 
     [Header("Mouse Cursor Settings")]
     public bool cursorLocked = true;
     public bool cursorInputForLook = true;
+
+    private void Start()
+    {
+        _serverHitBox = serverHitBox.GetComponent<ServerHitBox>();
+        _driveList = serverOBJ.GetComponent<Server>();
+    }
 
     public void OnMove(InputValue value)
     {
@@ -44,12 +59,18 @@ public class PlayerCharacterInput : MonoBehaviour
 
     public void OnServer(InputValue value)
     {
-        ServerState(value.isPressed);
-    }
-
-    public void ServerState(bool newServerState)
-    {
-        server = newServerState;
+        if (_serverHitBox.in_zone && _driveList.drives.Count > 0)
+        {
+            if (!inventoryUI.activeSelf)
+            {
+                inventoryUI.SetActive(true);
+                InputPrompt.SetActive(false);
+            }
+            else
+            {
+                inventoryUI.SetActive(false);
+            }
+        }
     }
 
 

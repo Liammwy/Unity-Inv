@@ -4,11 +4,14 @@ using UnityEngine;
 
 public class HardDrivePickup : MonoBehaviour, IPickupable
 {
-    public bool hasDrive = false;
-    // Start is called before the first frame update
+    public GameObject server;
+    private Server _driveList;
+
+
+
     void Start()
     {
-
+        _driveList = server.GetComponent<Server>();
     }
 
     // Update is called once per frame
@@ -19,8 +22,22 @@ public class HardDrivePickup : MonoBehaviour, IPickupable
 
     public void Pickup()
     {
-        Debug.Log("Picked up drive");
-        hasDrive = true;
-        Destroy(gameObject);
+        if (_driveList.drives.Count < 4) 
+        {
+            _driveList.drives.Add(new Drive());
+            _driveList.drives[_driveList.drives.Count - 1].itemAmount.Add(20);
+
+            Debug.Log(_driveList.drives.Count);
+            Destroy(gameObject);
+        }
+        else
+        {
+            Debug.Log("Too many drives!");
+        }
+    }
+
+    public void createDriveInventory()
+    {
+
     }
 }
