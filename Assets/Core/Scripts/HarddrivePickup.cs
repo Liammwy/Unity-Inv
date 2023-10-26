@@ -4,13 +4,15 @@ using UnityEngine;
 
 public class HardDrivePickup : MonoBehaviour, IPickupable
 {
-    public GameObject server;
+
+    private GameObject server;
     private Server _driveList;
 
 
 
     void Start()
     {
+        server = GameObject.FindGameObjectWithTag("Server");
         _driveList = server.GetComponent<Server>();
     }
 

@@ -8,13 +8,11 @@ using UnityEngine.UI;
 
 public class ServerHitBox : MonoBehaviour
 {
-    public GameObject inputPrompt;
-    public GameObject inputPromptError;
     public GameObject inventoryUi;
-    public GameObject server;
-    public GameObject driveInventoryBG;
+    private GameObject server;
     public GameObject driveInventoryGrid;
     private Server _driveList;
+
     public GameObject drivePrefab;
 
 
@@ -23,6 +21,7 @@ public class ServerHitBox : MonoBehaviour
     
     private void Start()
     {
+        server = GameObject.FindGameObjectWithTag("Server");
         _driveList = server.GetComponent<Server>();
     }
 
@@ -34,11 +33,7 @@ public class ServerHitBox : MonoBehaviour
             if (_driveList.drives.Count > 0)
             {
                 driveInventoryUI();
-                driveInventoryBG.SetActive(true);
-            }
-            else if (_driveList.drives.Count <= 0)
-            {
-
+                inventoryUi.SetActive(true);
             }
         }     
     }
@@ -46,7 +41,7 @@ public class ServerHitBox : MonoBehaviour
     private void OnTriggerExit(Collider other)
     {
         in_zone = false;
-        driveInventoryBG.SetActive(false);
+        inventoryUi.SetActive(false);
     }
 
     public void driveInventoryUI()
