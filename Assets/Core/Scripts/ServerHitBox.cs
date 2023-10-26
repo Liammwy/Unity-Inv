@@ -1,8 +1,10 @@
 using System.Collections;
 using System.Collections.Generic;
+using Unity.VisualScripting;
 using UnityEditor.Search;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class ServerHitBox : MonoBehaviour
 {
@@ -10,11 +12,14 @@ public class ServerHitBox : MonoBehaviour
     public GameObject inputPromptError;
     public GameObject inventoryUi;
     public GameObject server;
+    public GameObject driveInventoryBG;
+    public GameObject driveInventoryGrid;
     private Server _driveList;
+    public GameObject drivePrefab;
+
 
     public bool in_zone;
 
-    private HardDrivePickup hardDrivePickup;
     
     private void Start()
     {
@@ -28,11 +33,12 @@ public class ServerHitBox : MonoBehaviour
         {
             if (_driveList.drives.Count > 0)
             {
-                inputPrompt.SetActive(true);
+                driveInventoryUI();
+                driveInventoryBG.SetActive(true);
             }
             else if (_driveList.drives.Count <= 0)
             {
-                inputPromptError.SetActive(true);
+
             }
         }     
     }
@@ -40,7 +46,15 @@ public class ServerHitBox : MonoBehaviour
     private void OnTriggerExit(Collider other)
     {
         in_zone = false;
-        inputPrompt.SetActive(false);
-        inputPromptError.SetActive(false);
+        driveInventoryBG.SetActive(false);
+    }
+
+    public void driveInventoryUI()
+    {
+        for (int i = 0; i < _driveList.drives.Count - driveInventoryGrid.gameObject.transform.childCount; i++)
+        {
+            GameObject newObject = Instantiate(drivePrefab, driveInventoryGrid.gameObject.transform);
+            newObject.name = "Drive" + (driveInventoryGrid.gameObject.transform.childCount).ToString();
+        }
     }
 }

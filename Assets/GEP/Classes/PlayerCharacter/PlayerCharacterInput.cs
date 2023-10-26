@@ -20,7 +20,6 @@ public class PlayerCharacterInput : MonoBehaviour
 
     private Server _driveList;
     private ServerHitBox _serverHitBox;
-
     [Header("Movement Settings")]
     public bool analogMovement;
 
