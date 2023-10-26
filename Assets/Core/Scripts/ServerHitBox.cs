@@ -51,7 +51,7 @@ public class ServerHitBox : MonoBehaviour
 
     public void driveInventoryUI()
     {
-        for (int i = 0; i < _driveList.drives.Count - driveInventoryGrid.gameObject.transform.childCount; i++)
+        for (int i = 0; i <= _driveList.drives.Count - driveInventoryGrid.gameObject.transform.childCount; i++)
         {
             GameObject newObject = Instantiate(drivePrefab, driveInventoryGrid.gameObject.transform);
             newObject.name = "Drive" + (driveInventoryGrid.gameObject.transform.childCount).ToString();

@@ -9,8 +9,4 @@ public class Items : MonoBehaviour
     [SerializeField]
     private ItemScriptableObject Config;
 
-    void Start()
-    {
-        Debug.Log(Config.itemName);
-    }
 }
