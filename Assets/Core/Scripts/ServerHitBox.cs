@@ -10,11 +10,7 @@ public class ServerHitBox : MonoBehaviour
 {
     public GameObject inventoryUi;
     private GameObject server;
-    public GameObject driveInventoryGrid;
     private Server _driveList;
-
-    public GameObject drivePrefab;
-
 
     public bool in_zone;
 
@@ -32,7 +28,6 @@ public class ServerHitBox : MonoBehaviour
         {
             if (_driveList.drives.Count > 0)
             {
-                driveInventoryUI();
                 inventoryUi.SetActive(true);
             }
         }     
@@ -42,14 +37,5 @@ public class ServerHitBox : MonoBehaviour
     {
         in_zone = false;
         inventoryUi.SetActive(false);
-    }
-
-    public void driveInventoryUI()
-    {
-        for (int i = 1; i <= _driveList.drives.Count - driveInventoryGrid.gameObject.transform.childCount; i++)
-        {
-            GameObject newObject = Instantiate(drivePrefab, driveInventoryGrid.gameObject.transform);
-            newObject.name = "Drive" + (driveInventoryGrid.gameObject.transform.childCount).ToString();
-        }
     }
 }
