@@ -17,12 +17,26 @@ public class driveButtonSelection : MonoBehaviour
 
     public void driveClicked()
     {
-
-        Debug.Log(inventory.transform.childCount);
         uiPopup.SetActive(false);
         server.transform.Find(gameObject.name).gameObject.SetActive(true);
+
         inventory.transform.Find("HologramBackground").gameObject.SetActive(true);
+
+        for (int i = 0; i < inventory.transform.Find("HologramBackground").childCount; i++) 
+        {
+            if (inventory.transform.Find("HologramBackground").GetChild(i).gameObject.activeInHierarchy)
+            {
+                Debug.Log(inventory.transform.Find("HologramBackground").GetChild(i).gameObject.name);
+                inventory.transform.Find("HologramBackground").GetChild(i).gameObject.SetActive(false);
+            }
+        }
+
         inventory.transform.Find("HologramBackground").transform.Find(gameObject.name).gameObject.SetActive(true);
         //Debug.Log(gameObject.name);
+    }
+
+    public void driveRemoved()
+    {
+        inventory.transform.Find("HologramBackground").transform.Find(gameObject.name).gameObject.SetActive(false);
     }
 }
