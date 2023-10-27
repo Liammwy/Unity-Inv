@@ -40,7 +40,7 @@ public class HardDrivePickup : MonoBehaviour, IPickupable
             newDriveInventory.name = "Drive" + (inventoryList.transform.Find("Drives").Find("InventoryGrid").gameObject.transform.childCount).ToString();
             newDriveInventory.SetActive(false);
 
-            Debug.Log(_driveList.drives.Count);
+            //Debug.Log(_driveList.drives.Count);
             Destroy(gameObject);
         }
         else
