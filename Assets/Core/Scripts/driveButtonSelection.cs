@@ -9,6 +9,9 @@ public class driveButtonSelection : MonoBehaviour
     private GameObject uiPopup;
     private GameObject inventory;
 
+    private GameObject hologram;
+    private GameObject driveLocation;
+
     public void Start()
     {
         server = GameObject.FindGameObjectWithTag("Server");
@@ -18,6 +21,7 @@ public class driveButtonSelection : MonoBehaviour
 
     public void driveClicked()
     {
+        hologram = inventory.transform.Find("HologramBackground").gameObject;
         // Checking to see if the hard drive they are trying to put into the server is already activated
         // If the drive is active, we want to remove it from the server
         if (inventory.transform.Find("HologramBackground").transform.Find(gameObject.name).gameObject.activeInHierarchy)
