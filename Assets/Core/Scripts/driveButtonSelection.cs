@@ -9,7 +9,8 @@ public class driveButtonSelection : MonoBehaviour
     private GameObject uiPopup;
     private GameObject inventory;
 
-    private GameObject hologram;
+    private GameObject hologramUI;
+    private GameObject hologramGameObject;
     private GameObject driveLocation;
 
     public void Start()
@@ -21,23 +22,23 @@ public class driveButtonSelection : MonoBehaviour
 
     public void driveClicked()
     {
-        hologram = inventory.transform.Find("HologramBackground").gameObject;
+        hologramGameObject = inventory.transform.Find("HologramBackground").gameObject;
         // Checking to see if the hard drive they are trying to put into the server is already activated
         // If the drive is active, we want to remove it from the server
-        if (inventory.transform.Find("HologramBackground").transform.Find(gameObject.name).gameObject.activeInHierarchy)
+        if (hologramGameObject.transform.Find(gameObject.name).gameObject.activeInHierarchy)
         {
             // Setting drive inside of server object to false
             server.transform.Find(gameObject.name).gameObject.SetActive(false);
             // Background of inventory hidden
             // The drive inventory associated with each drive
-            inventory.transform.Find("HologramBackground").transform.Find(gameObject.name).gameObject.SetActive(false);
+            hologramGameObject.transform.Find(gameObject.name).gameObject.SetActive(false);
 
-            for (int i = 0; i < inventory.transform.Find("HologramBackground").childCount; i++)
+            for (int i = 0; i < hologramGameObject.transform.childCount; i++)
             {
-                if (inventory.transform.Find("HologramBackground").GetChild(i).gameObject.name != gameObject.name
-                    && (server.transform.Find(inventory.transform.Find("HologramBackground").GetChild(i).gameObject.name).gameObject.activeSelf))
+                if (hologramGameObject.transform.GetChild(i).gameObject.name != gameObject.name
+                    && (server.transform.Find(hologramGameObject.transform.GetChild(i).gameObject.name).gameObject.activeSelf))
                 {
-                    inventory.transform.Find("HologramBackground").GetChild(i).gameObject.SetActive(true);
+                    hologramGameObject.transform.GetChild(i).gameObject.SetActive(true);
                     break;
                 }
             }
@@ -47,17 +48,17 @@ public class driveButtonSelection : MonoBehaviour
         {
             uiPopup.SetActive(false);
             server.transform.Find(gameObject.name).gameObject.SetActive(true);
-            inventory.transform.Find("HologramBackground").gameObject.SetActive(true);
+            hologramGameObject.SetActive(true);
 
-            for (int i = 0; i < inventory.transform.Find("HologramBackground").childCount; i++)
+            for (int i = 0; i < hologramGameObject.transform.childCount; i++)
             {
-                if (inventory.transform.Find("HologramBackground").GetChild(i).gameObject.activeInHierarchy)
+                if (hologramGameObject.transform.GetChild(i).gameObject.activeInHierarchy)
                 {
-                    inventory.transform.Find("HologramBackground").GetChild(i).gameObject.SetActive(false);
+                    hologramGameObject.transform.GetChild(i).gameObject.SetActive(false);
                 }
             }
 
-            inventory.transform.Find("HologramBackground").transform.Find(gameObject.name).gameObject.SetActive(true);
+            hologramGameObject.transform.Find(gameObject.name).gameObject.SetActive(true);
         }
     }
 }
