@@ -27,12 +27,18 @@ public class ItemPickup : MonoBehaviour, IPickupable
     {
         if (_driveList.drives.Count > 0)
         {
-            item.itemPickedup();
-            Destroy(gameObject);
+            if (item.itemPickedup())
+            {
+                Destroy(gameObject);
+            }
+            else
+            {
+                Debug.Log("inventory too full");
+            }
         }
         else
         {
-            Debug.Log("No drives available to pick up items");
+            Debug.Log("No drives available to pick iup ");
         }
     }
 }
