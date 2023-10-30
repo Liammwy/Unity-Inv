@@ -63,11 +63,11 @@ public class Items : MonoBehaviour
         {
             currentInventorySlot = getActiveInventory.transform.GetChild(x).gameObject;
 
-            //if (currentInventorySlot.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text ==  Config.itemName)
-            //{
-            //    currentInventorySlot.transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = (int.Parse(currentInventorySlot.transform.GetChild(2).GetComponent<TextMeshProUGUI>().text) + itemAmount).ToString();
-            //    break;
-            //}
+            if (currentInventorySlot.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text ==  Config.itemName)
+            {
+                currentInventorySlot.transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = (int.Parse(currentInventorySlot.transform.GetChild(2).GetComponent<TextMeshProUGUI>().text) + itemAmount).ToString();
+                return true;
+            }
 
             if (currentInventorySlot.transform.GetChild(2).GetComponent<TextMeshProUGUI>().text == "")
             {
