@@ -1,6 +1,7 @@
 using Microsoft.Unity.VisualStudio.Editor;
 using System.Collections;
 using System.Collections.Generic;
+using System.Runtime.CompilerServices;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -34,6 +35,13 @@ public class Items : MonoBehaviour
 
     }
 
+    private void Update()
+    {
+        float rotate_angle = 0;
+        rotate_angle += 0.28f;
+        gameObject.transform.Rotate(0f, rotate_angle, 0f);
+    }
+
     public bool itemPickedup()
     {
         for (int i = 0; i < hologramGameObject.transform.childCount; i++)
@@ -53,7 +61,7 @@ public class Items : MonoBehaviour
                 }
             }
         }
-        return true;
+        return false;
         //First, try to put the item in the inventory that is currently active; if there is no active drive, then put it in the first available drive in the server.
     }
 
@@ -63,6 +71,7 @@ public class Items : MonoBehaviour
         {
             currentInventorySlot = getActiveInventory.transform.GetChild(x).gameObject;
 
+            // Item merging (if the inventory already contains a certain item, then it will stack)
             if (currentInventorySlot.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text ==  Config.itemName)
             {
                 currentInventorySlot.transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = (int.Parse(currentInventorySlot.transform.GetChild(2).GetComponent<TextMeshProUGUI>().text) + itemAmount).ToString();
