@@ -1,5 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
+using TMPro;
+using UnityEditor.ShaderGraph;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -36,11 +38,14 @@ public class HardDrivePickup : MonoBehaviour, IPickupable
             GameObject newObject = Instantiate(buttonDrivePrefab, inventoryList.transform.Find("Drives").Find("InventoryGrid").gameObject.transform);
             newObject.name = "Drive" + (inventoryList.transform.Find("Drives").Find("InventoryGrid").gameObject.transform.childCount).ToString();
 
+            newObject.transform.Find("ServerName").GetComponent<TextMeshProUGUI>().text = "Drive" + (inventoryList.transform.Find("Drives").Find("InventoryGrid").gameObject.transform.childCount).ToString();
+            newObject.transform.GetComponent<Image>().color = new Color(1f - (0.1f * inventoryList.transform.Find("Drives").Find("InventoryGrid").gameObject.transform.childCount), 0f, 0f);
+            //newObject.GetComponent<TextMeshPro>().text = "Drive" + (inventoryList.transform.Find("Drives").Find("InventoryGrid").gameObject.transform.childCount).ToString();
+
             GameObject newDriveInventory = Instantiate(inventoryOfDrivePrefab, inventoryList.transform.Find("HologramBackground").gameObject.transform);
             newDriveInventory.name = "Drive" + (inventoryList.transform.Find("Drives").Find("InventoryGrid").gameObject.transform.childCount).ToString();
             newDriveInventory.SetActive(false);
 
-            //Debug.Log(_driveList.drives.Count);
             Destroy(gameObject);
         }
         else

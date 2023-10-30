@@ -8,7 +8,7 @@ using UnityEngine.UI;
 
 public class ServerHitBox : MonoBehaviour
 {
-    public GameObject inventoryUi;
+    public GameObject inputPrompt;
     private GameObject server;
     private Server _driveList;
 
@@ -24,18 +24,12 @@ public class ServerHitBox : MonoBehaviour
     private void OnTriggerEnter(Collider other)
     {
         in_zone = true;
-        if (!inventoryUi.activeInHierarchy)
-        {
-            if (_driveList.drives.Count > 0)
-            {
-                inventoryUi.SetActive(true);
-            }
-        }     
+        inputPrompt.SetActive(true);
     }
 
     private void OnTriggerExit(Collider other)
     {
         in_zone = false;
-        inventoryUi.SetActive(false);
+        inputPrompt.SetActive(false);
     }
 }

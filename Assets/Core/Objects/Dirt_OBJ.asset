@@ -15,6 +15,6 @@ MonoBehaviour:
   itemName: Dirt
   itemDescription: '"This is dirt"'
   MAX_SIZE: 64
-  itemImage: {fileID: 0}
+  itemImage: {fileID: 21300000, guid: 50e79a187db11084981201c25620a425, type: 3}
   itemObject: {fileID: 4254656091157736923, guid: ec64758e29725a6448ce7585e7ab841d,
     type: 3}
