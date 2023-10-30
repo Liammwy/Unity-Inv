@@ -28,10 +28,12 @@ public class inventorySlotClicked : MonoBehaviour
             {
                 case "Stone":
                     newItem = Instantiate(stonePrefab);
+                    newItem.name = "Stone";
                     newItem.GetComponent<Items>().itemAmount = int.Parse(itemAmount);
                     break;
                 case "Dirt":
                     newItem = Instantiate(dirtPrefab);
+                    newItem.name = "Dirt";
                     newItem.GetComponent<Items>().itemAmount = int.Parse(itemAmount);
                     break;
             }
