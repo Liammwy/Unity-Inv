@@ -13,6 +13,10 @@ public class driveButtonSelection : MonoBehaviour
     private GameObject hologramGameObject;
     private GameObject driveLocation;
 
+    public Material server_Active;
+    public Material server_Inactive;
+    
+
     public void Start()
     {
         server = GameObject.FindGameObjectWithTag("Server");
@@ -38,6 +42,7 @@ public class driveButtonSelection : MonoBehaviour
                 if (hologramGameObject.transform.GetChild(i).gameObject.name != gameObject.name
                     && (server.transform.Find(hologramGameObject.transform.GetChild(i).gameObject.name).gameObject.activeSelf))
                 {
+                    server.transform.Find(hologramGameObject.transform.GetChild(i).gameObject.name).gameObject.GetComponent<MeshRenderer>().material = server_Active;
                     hologramGameObject.transform.GetChild(i).gameObject.SetActive(true);
                     break;
                 }
@@ -54,11 +59,14 @@ public class driveButtonSelection : MonoBehaviour
             {
                 if (hologramGameObject.transform.GetChild(i).gameObject.activeInHierarchy)
                 {
+                    server.transform.Find(hologramGameObject.transform.GetChild(i).gameObject.name).gameObject.GetComponent<MeshRenderer>().material = server_Inactive;
                     hologramGameObject.transform.GetChild(i).gameObject.SetActive(false);
                 }
             }
 
             hologramGameObject.transform.Find(gameObject.name).gameObject.SetActive(true);
+            server.transform.Find(gameObject.name).gameObject.GetComponent<MeshRenderer>().material = server_Active;
+
         }
     }
 }
