@@ -15,6 +15,6 @@ MonoBehaviour:
   itemName: Wood
   itemDescription: '"This is wood"'
   MAX_SIZE: 64
-  itemImage: {fileID: 21300000, guid: 1d99945bfed6c6f4992f2942554be129, type: 3}
-  itemObject: {fileID: 1398606642677892593, guid: 48a18f51ca0927c43843372f98aa231b,
+  itemImage: {fileID: 21300000, guid: 3a082de41a067b640832a22983560311, type: 3}
+  itemObject: {fileID: 1398606642677892593, guid: 793b170dd868c7242aaf7f5e36cdf3c6,
     type: 3}
