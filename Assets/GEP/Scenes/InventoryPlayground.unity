@@ -3699,6 +3699,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7225226454402747179, guid: 4df9a87682b4e6647adb52038cc94cab,
         type: 3}
+      propertyPath: inventorySystem
+      value: 
+      objectReference: {fileID: 273989004}
+    - target: {fileID: 7225226454402747179, guid: 4df9a87682b4e6647adb52038cc94cab,
+        type: 3}
       propertyPath: serverInputPrompt
       value: 
       objectReference: {fileID: 631346062}

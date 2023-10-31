@@ -11,6 +11,7 @@ namespace StarterAssets
 
     public class ThirdPersonController : MonoBehaviour
     {
+        public GameObject inventorySystem;
         [Header("Player")]
         [Tooltip("Move speed of the character in m/s")]
         public float MoveSpeed = 2.0f;
@@ -196,6 +197,10 @@ namespace StarterAssets
             // Cinemachine will follow this target
             CinemachineCameraTarget.transform.rotation = Quaternion.Euler(_cinemachineTargetPitch + CameraAngleOverride,
                 _cinemachineTargetYaw, 0.0f);
+
+            inventorySystem.transform.rotation = Quaternion.Euler(0f,
+                _cinemachineTargetYaw, 0.0f);
+
         }
 
         private void Move()
