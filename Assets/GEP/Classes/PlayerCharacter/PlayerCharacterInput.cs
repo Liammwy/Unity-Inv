@@ -16,7 +16,7 @@ public class PlayerCharacterInput : MonoBehaviour
     public GameObject serverOBJ;
     public GameObject inventoryUi;
 
-    public GameObject inventoryUI;
+    public GameObject playerInventory;
     public GameObject InputPrompt;
 
     private Server _driveList;
@@ -61,11 +61,20 @@ public class PlayerCharacterInput : MonoBehaviour
     {
         if (_serverHitBox.in_zone && _driveList.drives.Count > 0)
         {
-            if (_driveList.drives.Count > 0)
+            if (inventoryUi.activeInHierarchy)
             {
-                inventoryUi.SetActive(!inventoryUi.activeInHierarchy);
-                InputPrompt.SetActive(!InputPrompt.activeInHierarchy);
+                inventoryUi.SetActive(false);
             }
+            else
+            {
+                inventoryUi.SetActive(true);
+                InputPrompt.SetActive(false);
+            }
+            if (playerInventory.activeInHierarchy)
+            {
+                InputPrompt.SetActive(false);
+                Debug.Log("Inventory is active!");
+            }    
         }
     }
 
