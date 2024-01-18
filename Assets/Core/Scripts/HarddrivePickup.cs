@@ -53,9 +53,4 @@ public class HardDrivePickup : MonoBehaviour, IPickupable
             Debug.Log("Too many drives!");
         }
     }
-
-    public void createDriveInventory()
-    {
-
-    }
 }

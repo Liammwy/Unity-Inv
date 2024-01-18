@@ -3,7 +3,10 @@ guid: ea52d5cca26fe164b9d0b44a3bda89ea
 MonoImporter:
   externalObjects: {}
   serializedVersion: 2
-  defaultReferences: []
+  defaultReferences:
+  - dirtPrefab: {instanceID: 0}
+  - stonePrefab: {instanceID: 0}
+  - woodPrefab: {instanceID: 0}
   executionOrder: 0
   icon: {instanceID: 0}
   userData: 

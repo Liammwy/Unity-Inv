@@ -15,6 +15,13 @@ public class inventorySlotClicked : MonoBehaviour
 
     public GameObject dirtPrefab;
     public GameObject stonePrefab;
+    public GameObject woodPrefab;
+    private GameObject playerCharacter;
+
+    public void Start()
+    {
+        playerCharacter = GameObject.FindGameObjectWithTag("Player");
+    }
     public void inventoryButtonClicked()
     {
         if (gameObject.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text != "")
@@ -27,13 +34,19 @@ public class inventorySlotClicked : MonoBehaviour
             switch (itemName)
             {
                 case "Stone":
-                    newItem = Instantiate(stonePrefab);
+                    newItem = Instantiate(stonePrefab, new Vector3(playerCharacter.transform.position.x, playerCharacter.transform.position.y + 0.2f, playerCharacter.transform.position.z + Random.Range(0.5f, 1.5f)), Quaternion.identity);
                     newItem.name = "Stone";
                     newItem.GetComponent<Items>().itemAmount = int.Parse(itemAmount);
+                    //newItem.transform.position.x = playerCharacter.transform.position.x;
                     break;
                 case "Dirt":
-                    newItem = Instantiate(dirtPrefab);
+                    newItem = Instantiate(dirtPrefab, new Vector3(playerCharacter.transform.position.x, playerCharacter.transform.position.y + 0.2f, playerCharacter.transform.position.z + Random.Range(0.5f, 1.5f)), Quaternion.identity);
                     newItem.name = "Dirt";
+                    newItem.GetComponent<Items>().itemAmount = int.Parse(itemAmount);
+                    break;
+                case "Wood":
+                    newItem = Instantiate(woodPrefab, new Vector3(playerCharacter.transform.position.x, playerCharacter.transform.position.y + 0.2f, playerCharacter.transform.position.z + Random.Range(0.5f, 1.5f)), Quaternion.identity);
+                    newItem.name = "Wood";
                     newItem.GetComponent<Items>().itemAmount = int.Parse(itemAmount);
                     break;
             }
@@ -42,15 +55,6 @@ public class inventorySlotClicked : MonoBehaviour
             gameObject.transform.GetChild(1).GetComponent<TextMeshProUGUI>().text = "";
             gameObject.transform.GetChild(2).GetComponent<TextMeshProUGUI>().text = "";
             gameObject.transform.GetChild(0).GetComponent<UnityEngine.UI.Image>().enabled = false;
-
-            Debug.Log(spriteName);
-            Debug.Log(itemAmount);
-            Debug.Log(itemName);
         }
-        else
-        {
-            Debug.Log("There is no item in this position!");
-        }
-        // gameObject.name = the slot
     }
 }

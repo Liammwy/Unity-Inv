@@ -7,8 +7,6 @@ public class ItemPickup : MonoBehaviour, IPickupable
 
     private Server _driveList;
     private GameObject server;
-    private GameObject inventory;
-    private GameObject hologramGameObject;
     public Items item;
 
 
@@ -17,9 +15,6 @@ public class ItemPickup : MonoBehaviour, IPickupable
         item = gameObject.GetComponent<Items>();
         server = GameObject.FindGameObjectWithTag("Server");
         _driveList = server.GetComponent<Server>();
-        inventory = GameObject.FindGameObjectWithTag("inventoryUI");
-        hologramGameObject = inventory.transform.Find("HologramBackground").gameObject;
-
     }
 
 

@@ -1902,6 +1902,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   inputPrompt: {fileID: 631346062}
+  driveSelection: {fileID: 213396267}
   in_zone: 0
 --- !u!65 &1231155149
 BoxCollider:
@@ -3644,7 +3645,7 @@ GameObject:
   - component: {fileID: 1496469601939793287}
   m_Layer: 5
   m_Name: HologramBackground
-  m_TagString: Untagged
+  m_TagString: inventoryBackground
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

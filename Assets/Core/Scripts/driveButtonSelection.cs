@@ -9,10 +9,8 @@ public class driveButtonSelection : MonoBehaviour
     private GameObject uiPopup;
     private GameObject inventory;
 
-    private GameObject hologramUI;
     private GameObject hologramGameObject;
-    private GameObject driveLocation;
-
+    private GameObject hologramBackground;
     public Material server_Active;
     public Material server_Inactive;
     
@@ -36,6 +34,7 @@ public class driveButtonSelection : MonoBehaviour
             // Background of inventory hidden
             // The drive inventory associated with each drive
             hologramGameObject.transform.Find(gameObject.name).gameObject.SetActive(false);
+            hologramGameObject.SetActive(false);
 
             for (int i = 0; i < hologramGameObject.transform.childCount; i++)
             {

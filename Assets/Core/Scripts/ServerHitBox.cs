@@ -9,6 +9,7 @@ using UnityEngine.UI;
 public class ServerHitBox : MonoBehaviour
 {
     public GameObject inputPrompt;
+    public GameObject driveSelection;
     private GameObject server;
     private Server _driveList;
 
@@ -31,5 +32,7 @@ public class ServerHitBox : MonoBehaviour
     {
         in_zone = false;
         inputPrompt.SetActive(false);
+        driveSelection.SetActive(false);
     }
+
 }

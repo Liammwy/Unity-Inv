@@ -8,6 +8,7 @@ TagManager:
   - Server
   - inventoryUI
   - driveUI
+  - inventoryBackground
   layers:
   - Default
   - TransparentFX
